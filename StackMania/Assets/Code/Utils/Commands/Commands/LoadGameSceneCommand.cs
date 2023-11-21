@@ -8,7 +8,7 @@ public class LoadGameSceneCommand : ICommand
         compositeCommand.AddCommand(new LoadSceneCommand("GameScene"));
         compositeCommand.AddCommand(new StartBattleCommand());
         await compositeCommand.Execute();*/
-        await new LoadSceneCommand("GameScene").Execute();
+        await new LoadSceneCommand("DesignPatternsGameScene").Execute();
         await new StartBattleFromMenuCommand().Execute();
     }
 }

@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreView : MonoBehaviour
 {
 	[SerializeField]
-	private Text _text;
+	private TextMeshProUGUI _text;
 
     public void Reset()
     {

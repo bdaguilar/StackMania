@@ -12,10 +12,20 @@ public class GameInstaller : GeneralInstaller
     private PauseView _pauseMenu;
     [SerializeField]
     private GameOverView _gameOverView;
+    [SerializeField]
+    private CubesSpawner _cubeSpawner;
+    [SerializeField]
+    private CubesConfiguration _cubesConfiguration;
+
 
     protected override void DoInstalDependencies()
     {
-
+        InstallCubeFactory();
+    }
+    private void InstallCubeFactory()
+    {
+        CubeFactory cubeFactory = new CubeFactory(Instantiate(_cubesConfiguration));
+        ServiceLocator.Instance.RegisterService(cubeFactory);
     }
 
     protected override void DoStart()
@@ -25,6 +35,7 @@ public class GameInstaller : GeneralInstaller
         ServiceLocator.Instance.RegisterService(_menu);
         ServiceLocator.Instance.RegisterService(_pauseMenu);
         ServiceLocator.Instance.RegisterService(_gameOverView);
+        ServiceLocator.Instance.RegisterService(_cubeSpawner);
     }
 
     private void OnDestroy()
@@ -34,5 +45,6 @@ public class GameInstaller : GeneralInstaller
         ServiceLocator.Instance.UnregisterService<Menu>();
         ServiceLocator.Instance.UnregisterService<PauseView>();
         ServiceLocator.Instance.UnregisterService<GameOverView>();
+        ServiceLocator.Instance.UnregisterService<CubesSpawner>();
     }
 }
