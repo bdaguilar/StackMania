@@ -23,10 +23,9 @@ public class CubesSpawner : MonoBehaviour
         currentSpawner = _spawnPositions[spawnerIndex];
     }
 
-    private async void Start()
+    private void Start()
     {
         _cubeFactory = ServiceLocator.Instance.GetService<CubeFactory>();
-        await Task.Delay(500);
     }
 
     public void Init()
@@ -39,17 +38,7 @@ public class CubesSpawner : MonoBehaviour
         
     }
 
-    /*private void Update()
-    {
-        if (!_canSpawn)
-        {
-            return;
-        }
-
-        SpawnCube(_cubeToSpawnConfiguration);
-    }*/
-
-    private void SpawnCube(CubeToSpawnConfiguration spawnConfiguration)
+    public void SpawnCube(CubeToSpawnConfiguration spawnConfiguration)
     {
         spawnerIndex = spawnerIndex == 0 ? 1 : 0;
         currentSpawner = _spawnPositions[spawnerIndex];

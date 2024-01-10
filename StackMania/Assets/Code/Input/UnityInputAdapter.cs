@@ -1,7 +1,9 @@
-﻿public class UnityInputAdapter : IInput
+﻿using UnityEngine;
+
+public class UnityInputAdapter : IInput
 {
     public bool IsStopActionPressed()
     {
-        throw new System.NotImplementedException();
+        return Input.GetKeyDown(KeyCode.Space);
     }
 }

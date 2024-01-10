@@ -15,7 +15,7 @@ public class CubeFactory
         foreach (CubeMediator cubeMediator in prefabs)
         {
             ObjectPool objectPool = new ObjectPool(cubeMediator);
-            objectPool.Init(10);
+            objectPool.Init(100);
             _pools.Add(cubeMediator.Id, objectPool);
         }
     }

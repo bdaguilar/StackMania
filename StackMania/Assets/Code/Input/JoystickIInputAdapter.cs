@@ -9,6 +9,6 @@
 
     public bool IsStopActionPressed()
     {
-        throw new System.NotImplementedException();
+        return _joyButton.IsPressed;
     }
 }

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class CubeBuilder : MonoBehaviour
+public class CubeBuilder
 {
     public enum InputMode
     {

@@ -23,6 +23,11 @@ public class MovementController : MonoBehaviour
             transform.position += transform.right * Time.deltaTime * _speed;
     }
 
+    public void Stop()
+    {
+        _speed = 0;
+    }
+
     public void SetDirection(MoveDirection moveDirection)
     {
         _moveDirection = moveDirection;

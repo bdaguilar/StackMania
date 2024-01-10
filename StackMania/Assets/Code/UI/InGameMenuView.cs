@@ -18,6 +18,7 @@ public class InGameMenuView : MonoBehaviour, IEventObserver, IInGameMenuMediator
     private void Awake()
     {
         _pauseButton.onClick.AddListener(OnPauseGamePressed);
+        _pauseButton.enabled = false;
         _pauseView.Configure(this);
         _gameOverView.Configure(this);
         _initButton.onClick.AddListener(OnInitGamePressed);
@@ -59,6 +60,7 @@ public class InGameMenuView : MonoBehaviour, IEventObserver, IInGameMenuMediator
         _commandQueue.AddCommand(new RestartGameCommand());
         _initButton.gameObject.SetActive(true);
         _initButton.enabled = true;
+        _pauseButton.enabled = false;
     }
 
     public void OnResumeGamePressed()
@@ -71,6 +73,7 @@ public class InGameMenuView : MonoBehaviour, IEventObserver, IInGameMenuMediator
     {
         _initButton.gameObject.SetActive(false);
         _initButton.enabled = false;
+        _pauseButton.enabled = true;
         ServiceLocator.Instance.GetService<CubesSpawner>().Init();
     }
 

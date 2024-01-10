@@ -16,9 +16,18 @@ public abstract class GeneralInstaller : MonoBehaviour
         DoStart();
     }
 
+    private void OnEnable()
+    {
+        DoOnEnable();
+    }
+
     abstract protected void DoStart();
 
-    abstract protected void DoInstalDependencies();
+    abstract protected void DoOnEnable();
+
+    abstract protected void DoInstallDependencies();
+
+    abstract public void DoInstallDependenciesOnCommand();
 
     private void InstallDependencies()
     {
@@ -26,7 +35,7 @@ public abstract class GeneralInstaller : MonoBehaviour
         {
             installer.Install(ServiceLocator.Instance);
         }
-        DoInstalDependencies();
+        DoInstallDependencies();
     }
 }
 
