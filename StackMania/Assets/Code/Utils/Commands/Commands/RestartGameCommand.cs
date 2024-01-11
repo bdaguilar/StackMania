@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using UnityEngine;
 
 public class RestartGameCommand : ICommand
 {
@@ -9,6 +10,7 @@ public class RestartGameCommand : ICommand
         await new ResumeGameCommand().Execute();
         await new StopGameCommand().Execute();
         await new StartBattleFromMenuCommand().Execute();
+        CubeMediator.LastCube = GameObject.Find("StartingCube").GetComponent<CubeMediator>();
     }
 }
 

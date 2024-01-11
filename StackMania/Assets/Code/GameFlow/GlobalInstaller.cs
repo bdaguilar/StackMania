@@ -11,8 +11,17 @@ public class GlobalInstaller : GeneralInstaller
         ServiceLocator.Instance.RegisterService<IScoreSystem>(scoreSystem);
     }
 
-    protected override void DoInstalDependencies()
+    protected override void DoInstallDependencies()
     {
         ServiceLocator.Instance.RegisterService<CommandQueue>(CommandQueue.Instance);
+    }
+
+    protected override void DoOnEnable()
+    {
+       
+    }
+
+    public override void DoInstallDependenciesOnCommand()
+    {
     }
 }

@@ -2,10 +2,7 @@
 
 public enum EventIds
 {
-	ShipDestroyed,
-    ShipSpawned,
-    AllShipsSpawned,
+	CubeMissed,
     GameOver,
-    Victory,
     RestartGame
 } 

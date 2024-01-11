@@ -12,9 +12,8 @@ public class ScoreSystem : IEventObserver, IScoreSystem
     {
         _dataStore = dataStore;
         IEventQueue eventQueue = ServiceLocator.Instance.GetService<IEventQueue>();
-        eventQueue.Subscribe(EventIds.Victory, this);
         eventQueue.Subscribe(EventIds.GameOver, this);
-        ServiceLocator.Instance.GetService<IEventQueue>().Subscribe(EventIds.ShipDestroyed, this);
+        //ServiceLocator.Instance.GetService<IEventQueue>().Subscribe(EventIds.ShipDestroyed, this);
     }
 
     public void Reset()
@@ -24,18 +23,9 @@ public class ScoreSystem : IEventObserver, IScoreSystem
 
     public void Process(EventData eventData)
     {
-        if (eventData.EventId == EventIds.Victory || eventData.EventId == EventIds.GameOver)
+        if (eventData.EventId == EventIds.GameOver)
         {
             UpdateBestScores(_currentScore);
-            return;
-        }
-
-        if (eventData.EventId == EventIds.ShipDestroyed)
-        {
-            ShipDestroyedEventData shipDestroyedEventData = (ShipDestroyedEventData)eventData;
-
-            AddScore(shipDestroyedEventData);
-
             return;
         }
     }
@@ -82,14 +72,9 @@ public class ScoreSystem : IEventObserver, IScoreSystem
             SaveBestScores(bestScores);
     }
 
-    private void AddScore(ShipDestroyedEventData shipDestroyedEventData)
+    public void AddScore(int scoreToAdd)
     {
-        if (shipDestroyedEventData.Team != Teams.Enemy)
-        {
-            return;
-        }
-
-        _currentScore += shipDestroyedEventData.ScoreToAdd;
+        _currentScore += scoreToAdd;
         ServiceLocator.Instance.GetService<ScoreView>().UpdateScore(_currentScore);
     }
 }

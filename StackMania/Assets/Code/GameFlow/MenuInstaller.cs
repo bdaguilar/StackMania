@@ -1,6 +1,14 @@
 ﻿public class MenuInstaller : GeneralInstaller
 {
-    protected override void DoInstalDependencies()
+    public override void DoInstallDependenciesOnCommand()
+    {
+    }
+
+    protected override void DoInstallDependencies()
+    {
+    }
+
+    protected override void DoOnEnable()
     {
 
     }

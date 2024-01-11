@@ -4,18 +4,18 @@ using UnityEngine.UI;
 public class PauseView : BaseInGameView
 {
     [SerializeField]
-    private Button _resumeBattleButton;
+    private Button _resumeGameButton;
     [SerializeField]
-    private Button _restartBattleButton;
+    private Button _restartGameButton;
     [SerializeField]
-    private Button _stopBattleButton;
+    private Button _stopGameButton;
 
 
     private void Awake()
     {
-        _resumeBattleButton.onClick.AddListener(OnResumePressed);
-        _restartBattleButton.onClick.AddListener(OnRestartPressed);
-        _stopBattleButton.onClick.AddListener(OnBackToMainMenuPressed);
+        _resumeGameButton.onClick.AddListener(OnResumePressed);
+        _restartGameButton.onClick.AddListener(OnRestartPressed);
+        _stopGameButton.onClick.AddListener(OnBackToMainMenuPressed);
         gameObject.SetActive(false);
     }
 

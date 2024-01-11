@@ -11,5 +11,6 @@ public class StartBattleFromMenuCommand : ICommand
         ServiceLocator.Instance.GetService<ScoreView>().Reset();
 
         await new HideScreenFadeCommand().Execute();
+        await Task.CompletedTask;
     }
 }
